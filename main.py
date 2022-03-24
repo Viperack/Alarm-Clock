@@ -1,4 +1,12 @@
 from datetime import datetime
+import RPi.GPIO as GPIO
+
+pinPiezo = 40
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(pinPiezo, GPIO.OUT)
+
+GPIO.output(pinPiezo, 1)
 
 def day(dayOfWeek):
     match dayOfWeek:

@@ -1,12 +1,13 @@
 from datetime import datetime
 import RPi.GPIO as GPIO
 
-pinPiezo = 40
+pinPiezo = 21
 
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pinPiezo, GPIO.OUT)
 
-GPIO.output(pinPiezo, 1)
+GPIO.output(pinPiezo, GPIO.LOW)
 
 def day(dayOfWeek):
     return {
@@ -19,4 +20,4 @@ def day(dayOfWeek):
         6: "Sunday",
     }[dayOfWeek]
 
-print (day(datetime.today().weekday()))
+#print (day(datetime.today().weekday()))

@@ -9,22 +9,14 @@ GPIO.setup(pinPiezo, GPIO.OUT)
 GPIO.output(pinPiezo, 1)
 
 def day(dayOfWeek):
-    match dayOfWeek:
-        case 0:
-            return "Monday"
-        case 1:
-            return "Tuesday"
-        case 2:
-            return "Wednesday"
-        case 3:
-            return "Thursday"
-        case 4:
-            return "Friday"
-        case 5:
-            return "Saturday"
-        case 6:
-            return "Sunday"
-        case _:        
-            return "Incorrect day"
+    return {
+        0: "Monday",
+        1: "Tuesday",
+        2: "Wednesday",
+        3: "Thursday",
+        4: "Friday",
+        5: "Saturday",
+        6: "Sunday",
+    }[dayOfWeek]
 
 print (day(datetime.today().weekday()))

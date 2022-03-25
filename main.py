@@ -20,14 +20,18 @@ def alarm(day):
     if time.localtime().tm_hour >= wake_up_times[day][0]:
         if time.localtime().tm_hour == wake_up_times[day][0]:
             if time.localtime().tm_min < wake_up_times[day][1]:
+                print("Sleeping %s" % (60 * (wake_up_times[day][1] - time.localtime().tm_min)) + " seconds")
                 time.sleep(60 * (wake_up_times[day][1] - time.localtime().tm_min))
             else:
+                print("Sleeping %s" % (3600 * (23 - time.localtime().tm_hour) + 60 * (60 - time.localtime().tm_min)) + " seconds")
                 time.sleep(3600 * (23 - time.localtime().tm_hour) + 60 * (60 - time.localtime().tm_min))
                 alarm(datetime.today().weekday())
         else:
+            print("Sleeping %s" % (3600 * (23 - time.localtime().tm_hour) + 60 * (60 - time.localtime().tm_min)) + " seconds")
             time.sleep(3600 * (23 - time.localtime().tm_hour) + 60 * (60 - time.localtime().tm_min))
             alarm(datetime.today().weekday())
-    else:    
+    else:
+        print("Sleeping %s" % (3600 * (wake_up_times[day][0] - time.localtime().tm_hour) + 60 * (wake_up_times[day][1] - time.localtime().tm_min)) + " seconds")
         time.sleep(3600 * (wake_up_times[day][0] - time.localtime().tm_hour) + 60 * (wake_up_times[day][1] - time.localtime().tm_min))
 
     return 0

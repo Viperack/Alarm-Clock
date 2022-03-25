@@ -10,6 +10,8 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pinPiezo, GPIO.OUT)
 
+GPIO.output(pinPiezo, GPIO.HIGH)
+time.sleep(0.4)
 GPIO.output(pinPiezo, GPIO.LOW)
 
 def alarm(day):
@@ -21,10 +23,12 @@ def alarm(day):
                 time.sleep(60 * (wake_up_times[day][1] - time.localtime().tm_min))
             else:
                 time.sleep(3600 * (23 - time.localtime().tm_hour) + 60 * (60 - time.localtime().tm_min))
+                alarm(datetime.today().weekday())
         else:
             time.sleep(3600 * (23 - time.localtime().tm_hour) + 60 * (60 - time.localtime().tm_min))
+            alarm(datetime.today().weekday())
     else:    
-        time.sleep(60 * (60 - time.localtime().tm_min))
+        time.sleep(3600 * (wake_up_times[day][0] - time.localtime().tm_hour) + 60 * (wake_up_times[day][1] - time.localtime().tm_min))
 
     return 0
 

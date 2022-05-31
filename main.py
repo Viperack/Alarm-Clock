@@ -18,8 +18,6 @@ time.sleep(0.4)
 GPIO.output(pinBuzzer, GPIO.LOW)
 
 def alarm(day):
-    if 
-    
     if time.localtime().tm_hour >= wake_up_times[day][0]:
         if time.localtime().tm_hour == wake_up_times[day][0]:
             if time.localtime().tm_min < wake_up_times[day][1]:
@@ -80,9 +78,7 @@ try:
     while (True):
         alarm(datetime.today().weekday())
         GPIO.add_event_detect(pinButton, GPIO.RISING, callback=turnOff)
-        print("T")
         while (True):
-            print(buttonPressed)
             GPIO.output(pinBuzzer, GPIO.HIGH)
             for i in range(20):
                 if (GPIO.input(pinMotionDetector)):

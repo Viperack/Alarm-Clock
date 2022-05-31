@@ -13,6 +13,9 @@ GPIO.setup(pinBuzzer, GPIO.OUT)
 GPIO.setup(pinButton, GPIO.IN)
 GPIO.setup(pinMotionDetector, GPIO.IN)
 
+while (True):
+    print(GPIO.input(pinMotionDetector))
+"""
 def my_callback(channel):
     # Here, alternatively, an application / command etc. can be started.
     print('There was a movement!')
@@ -40,4 +43,5 @@ try:
     GPIO.remove_event_detect(pinButton)
 except KeyboardInterrupt:
     print("Finish...")
+"""
 GPIO.cleanup()
